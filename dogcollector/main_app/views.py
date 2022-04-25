@@ -1,21 +1,9 @@
 from django.shortcuts import render
+from .models import Dog
 
 # Create your views here.
 from django.http import HttpResponse # like res.render in Express
-
-class Dog:
-    def __init__(self, name, breed, description, age):
-        self.name = name
-        self.breed = breed
-        self.description = description
-        self.age = age
-
-dogs = [
-    Dog("Lou", 'Golden Retriever', 'very cute', 7),
-    Dog('Trix', 'Chihuahua', 'fiesty', 3),
-    Dog('Tood', 'Pug', 'happy little guy', 8),
-    Dog('Molly', 'French Bulldog', 'party animal', 4)
-]        
+      
 
 def home(request):
     return HttpResponse('<h1>Hello World</h1>')
@@ -24,4 +12,9 @@ def about(request):
     return render(request, 'about.html')  
 
 def dogs_index(request):
-    return render(request, 'dogs/index.html', {'dogs': dogs})      
+    dogs = Dog.objects.all()
+    return render(request, 'dogs/index.html', {'dogs': dogs})  
+
+def dogs_detail(request, dog_id):
+    dog = Dog.objects.get(id=dog_id)
+    return render(request, 'dogs/detail.html', {'dog': dog})

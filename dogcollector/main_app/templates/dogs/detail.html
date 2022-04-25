@@ -2,11 +2,10 @@
 
 {% block content %}
 
-<h1>Dog List</h1>
+<h1> Dog Details</h1>
 
-{% for dog in dogs %}
-<a href="{% url 'detail' dog.id %}">
-  <div class="card">
+
+<div class="card">
     <div class="card-content">
       <span class="card-title">{{ dog.name }}</span>
       <p>Breed: {{ dog.breed }}</p>
@@ -18,6 +17,8 @@
       {% endif %}
     </div>
   </div>
-{% endfor %}
+</a>
+
+	
 
 {% endblock %}

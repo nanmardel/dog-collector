@@ -27,7 +27,9 @@
     <form method="post" action="{% url 'add_feeding' dog.id %}">
         {% csrf_token %}
         {{ feeding_form.as_p }}
-        <input type="submit" class="btn" value="Add Feeding">
+        <button class="btn waves-effect waves-red" type="submit" name="action">Add Feeding
+            <i class="material-icons right"></i>
+          </button>
       </form>
     <table class="striped">
       <thead>
